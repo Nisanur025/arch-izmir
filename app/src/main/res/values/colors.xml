@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent_black">#58000000</color>
+    <color name="alacakaranlik_moru">#6A5A82</color>
+    <color name="lavanta_sisi">#E3DDEE</color>
+    <color name="gul_kurusu">#F1D5D6</color>
+    <color name="soluk_altin">#C1EFD8A4</color>
+    <color name="korfez_grisi">#D9E0EA</color>
+    <color name="gece_murekkebi">#3B3445</color>
+    <color name="sayfa_zemini">#FAF8F9</color>
+    <color name="gold_accent">#B0912C</color>
 </resources>
