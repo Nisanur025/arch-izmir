@@ -1,14 +1,23 @@
 package com.example.arch_izmir
 
+import UserRepository
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.arch_izmir.databinding.FragmentLoginBinding
+import com.example.arch_izmir.databinding.FragmentRegisterBinding
+import kotlinx.coroutines.launch
 
 
 class LoginFragment : Fragment() {
 
+    private  var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,10 +27,48 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    ): View {
+        _binding = FragmentLoginBinding.inflate(inflater,container,false)
+        return binding.root
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val db = AppDatabase.getInstance(requireContext())
+        val repository = UserRepository(db.userDao())
+
+       binding.tvRegister.setOnClickListener {
+           findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+       }
+
+        // Login Butonu
+        binding.btnLogin.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+
+            // Boş kontrolleri
+            if (email.isBlank()) {
+                binding.etEmail.error = "E-posta boş olamaz"
+                return@setOnClickListener
+            }
+            if (password.isBlank()) {
+                binding.etPassword.error = "Şifre boş olamaz"
+                return@setOnClickListener
+            }
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                when(val sonuc = repository.login(email,password)){
+                    is AuthResult.Success -> Toast.makeText(requireContext(),"Giriş Başarılı",
+                        Toast.LENGTH_LONG).show()
+                    is AuthResult.Error -> Toast.makeText(requireContext(), "Giriş Hatalı", Toast.LENGTH_LONG).show()
+                }
+            }
+
+
+        }
+    }
+
 
 
 }
