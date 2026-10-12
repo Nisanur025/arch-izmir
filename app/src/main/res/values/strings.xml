@@ -12,4 +12,12 @@
     <string name="btn_google">Google ile Devam Et</string>
     <string name="btn_apple">Apple ile Devam Et</string>
 
+    <string name="register_title">KAYIT OL</string>
+    <string name="register_sub_string">Aramıza Katıl ve Keşfe Başla</string>
+    <string name="hint_full_name">Ad Soyad</string>
+    <string name="hint_confirm_password">Şifre Tekrar</string>
+    <string name="btn_register">Hesap Oluştur</string>
+    <string name="text_has_account">Zaten bir hesabın var mı?</string>
+    <string name="action_login">Giriş Yap</string>
+
 </resources>
