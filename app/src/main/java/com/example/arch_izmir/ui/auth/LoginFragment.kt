@@ -61,9 +61,12 @@ class LoginFragment : Fragment() {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 when(val sonuc = repository.login(email,password)){
-                    is AuthResult.Success -> Toast.makeText(requireContext(),"Giriş Başarılı",
-                        Toast.LENGTH_LONG).show()
-                    is AuthResult.Error -> Toast.makeText(requireContext(), "Giriş Hatalı", Toast.LENGTH_LONG).show()
+                    is AuthResult.Success ->{
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
+                    is AuthResult.Error -> {
+                        Toast.makeText(requireContext(),sonuc.message, Toast.LENGTH_LONG).show()
+                    }
                 }
             }
 

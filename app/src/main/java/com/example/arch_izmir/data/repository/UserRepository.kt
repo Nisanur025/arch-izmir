@@ -28,7 +28,8 @@ class UserRepository(private val userDao: UserDao) {
     }
 
     suspend fun login(email: String, password: String): AuthResult {
-        val user = userDao.findByEmail(email.trim().lowercase())
+        val cleanEmail=email.trim().lowercase()
+        val user = userDao.findByEmail(cleanEmail)
             ?: return AuthResult.Error("E-posta veya şifre hatalı")
 
         val ok = BCrypt.verifyer()
