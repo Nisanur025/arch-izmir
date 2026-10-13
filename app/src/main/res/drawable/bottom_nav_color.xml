@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Seçili ikon -->
+    <item android:color="@color/gun_batimi_turuncu" android:state_checked="true" />
+    <!-- Seçili olmayan ikon -->
+    <item android:color="@color/krem" />
+</selector>
