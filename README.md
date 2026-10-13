@@ -8,9 +8,13 @@
 
 ## 📱 Ekran Görüntüleri
 
-| Giriş Ekranı | Kayıt Ekranı | Ana Sayfa |
-|:---:|:---:|:---:|
-| ![Giriş](screenshots/login.png) | ![Kayıt](screenshots/register.png) | ![Ana Sayfa](screenshots/home.png) |
+<table align="center">
+  <tr>
+    <td align="center"><img src="screenshots/login.png" width="240" /><br/><b>Giriş</b></td>
+    <td align="center"><img src="screenshots/register.png" width="240" /><br/><b>Kayıt</b></td>
+    <td align="center"><img src="screenshots/home.png" width="240" /><br/><b>Ana Sayfa</b></td>
+  </tr>
+</table>
 
 | Yer Detayı | Favoriler | Harita |
 |:---:|:---:|:---:|
@@ -85,7 +89,7 @@ com.example.arch_izmir
 
 1. Depoyu klonlayın:
    ```bash
-   git clone https://github.com/Nisanur025/arch_izmir.git
+   git clone https://github.com/Nisanur025/arch-izmir.git
    ```
 2. Android Studio ile projeyi açın.
 3. Gradle senkronizasyonunun bitmesini bekleyin.
