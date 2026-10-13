@@ -11,7 +11,7 @@
     import com.example.arch_izmir.R
     import com.example.arch_izmir.data.model.Place
     import com.example.arch_izmir.databinding.FragmentHomeBinding
-    import com.example.arch_izmir.ui.main.PlaceAdapter
+    import com.example.arch_izmir.ui.adapter.PlaceAdapter
 
 
     class HomeFragment : Fragment() {

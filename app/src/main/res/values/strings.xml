@@ -37,4 +37,6 @@
     <string name="route">Rota</string>
     <string name="saved">Kaydedilen</string>
     <string name="passport">Pasaport</string>
+    <string name="rememberMe">Beni hatırla</string>
+
 </resources>

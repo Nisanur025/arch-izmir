@@ -1,4 +1,4 @@
-package com.example.arch_izmir.ui.main
+package com.example.arch_izmir.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

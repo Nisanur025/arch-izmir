@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.arch_izmir.R
 import com.example.arch_izmir.databinding.FragmentLoginBinding
 import com.example.arch_izmir.data.local.AppDatabase
+import com.example.arch_izmir.data.local.SessionAdministrator
 import com.example.arch_izmir.data.repository.AuthResult
 import kotlinx.coroutines.launch
 
@@ -35,10 +36,20 @@ class LoginFragment : Fragment() {
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val db = AppDatabase.getInstance(requireContext())
         val repository = UserRepository(db.userDao())
+
+        // Giris Hatırla
+        val session = SessionAdministrator(requireContext())
+
+        // Daha önce beni hatırla seçiliyse atla
+        if (session.isRememberChecked()) {
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+            return
+        }
 
        binding.tvRegister.setOnClickListener {
            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
@@ -60,12 +71,13 @@ class LoginFragment : Fragment() {
             }
 
             viewLifecycleOwner.lifecycleScope.launch {
-                when(val sonuc = repository.login(email,password)){
-                    is AuthResult.Success ->{
+                when (val sonuc = repository.login(email, password)) {
+                    is AuthResult.Success -> {
+                        session.saveSession(binding.cbRememberMe.isChecked, email)
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     }
                     is AuthResult.Error -> {
-                        Toast.makeText(requireContext(),sonuc.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), sonuc.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -73,7 +85,10 @@ class LoginFragment : Fragment() {
 
         }
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 
 }
