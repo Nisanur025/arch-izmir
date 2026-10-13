@@ -10,16 +10,11 @@
 
 <table align="center">
   <tr>
-    <td align="center"><img src="screenshots/login.png" width="240" /><br/><b>Giriş</b></td>
-    <td align="center"><img src="screenshots/register.png" width="240" /><br/><b>Kayıt</b></td>
-    <td align="center"><img src="screenshots/home.png" width="240" /><br/><b>Ana Sayfa</b></td>
+    <td align="center" valign="top"><img src="screenshots/login.png" height="480" /><br/><b>Giriş</b></td>
+    <td align="center" valign="top"><img src="screenshots/register.png" height="480" /><br/><b>Kayıt</b></td>
+    <td align="center" valign="top"><img src="screenshots/home.png" height="480" /><br/><b>Ana Sayfa</b></td>
   </tr>
 </table>
-
-| Yer Detayı | Favoriler | Harita |
-|:---:|:---:|:---:|
-| *(yakında)* | *(yakında)* | *(yakında)* |
-
 ---
 
 ## ✨ Özellikler
