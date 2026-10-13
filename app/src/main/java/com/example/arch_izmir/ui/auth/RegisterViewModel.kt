@@ -1,6 +1,10 @@
+package com.example.arch_izmir.ui.auth
+
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.arch_izmir.data.repository.AuthResult
+import com.example.arch_izmir.data.repository.UserRepository
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val repository: UserRepository): ViewModel(){

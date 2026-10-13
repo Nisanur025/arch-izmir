@@ -1,3 +1,5 @@
+package com.example.arch_izmir.data.local
+
 import android.content.Context
 import androidx.room3.Database
 import androidx.room3.Room

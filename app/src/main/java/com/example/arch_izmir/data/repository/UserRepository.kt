@@ -1,4 +1,8 @@
+package com.example.arch_izmir.data.repository
+
 import at.favre.lib.crypto.bcrypt.BCrypt
+import com.example.arch_izmir.data.local.User
+import com.example.arch_izmir.data.local.UserDao
 
 sealed class AuthResult {
     data class Success(val user: User) : AuthResult()
@@ -15,7 +19,7 @@ class UserRepository(private val userDao: UserDao) {
         val hash = BCrypt.withDefaults().hashToString(12, password.toCharArray())
 
         val user = User(
-            fullName =fullName.trim(),
+            fullName = fullName.trim(),
             passwordHash = hash,
             email = cleanEmail
         )

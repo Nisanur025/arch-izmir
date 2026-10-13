@@ -1,6 +1,6 @@
-package com.example.arch_izmir
+package com.example.arch_izmir.ui.auth
 
-import UserRepository
+import com.example.arch_izmir.data.repository.UserRepository
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.arch_izmir.R
 import com.example.arch_izmir.databinding.FragmentLoginBinding
-import com.example.arch_izmir.databinding.FragmentRegisterBinding
+import com.example.arch_izmir.data.local.AppDatabase
+import com.example.arch_izmir.data.repository.AuthResult
 import kotlinx.coroutines.launch
 
 
