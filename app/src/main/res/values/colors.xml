@@ -11,4 +11,22 @@
     <color name="gece_murekkebi">#3B3445</color>
     <color name="sayfa_zemini">#FAF8F9</color>
     <color name="gold_accent">#B0912C</color>
+
+    <color name="gun_batimi_turuncu">#E8955A</color>
+    <color name="home_bg">#18151D</color>
+    <color name="mercan">#E5645F</color>
+    <color name="krem_bej">#F3ECE2</color>
+    <color name="antik">#B8AEA1</color>
+    <color name="krem">#EAD2AC</color>
+    <!-- Arch İzmir Chip Renkleri -->
+    <color name="chip_bg_normal">#282330</color>       <!-- Normal arka plan -->
+    <color name="chip_bg_selected">#D2AC67</color>     <!-- Seçili arka plan (Gold) -->
+    <color name="chip_text_normal">#BCAE9A</color>     <!-- Normal yazı rengi (Krem) -->
+    <color name="chip_text_selected">#1C1821</color>   <!-- Seçili yazı rengi (Koyu) -->
+    <color name="chip_stroke_color">#4A3F55</color>    <!-- Kenarlık rengi -->
+
+    <color name="card_cream">#FAEFD4</color>
+    <color name="glow_gold">#E8C77A</color>
+    <color name="glow_gold_soft">#80E8C77A</color>
+
 </resources>

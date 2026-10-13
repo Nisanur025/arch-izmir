@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.auth.HomeFragment"
+    android:fillViewport="true"
+    android:background="@color/home_bg">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp">
+
+        <!--Baslik-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTitleHome"
+            android:layout_marginTop="30dp"
+            android:text="@string/discover_izmir"
+            android:textColor="@color/antik"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:fontFamily="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <!--Alt Baslik Slogan-->
+        <TextView
+            android:id="@+id/homeSubString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_sub_string"
+            style="@style/SubtitleTextStyle"
+            android:textColor="#BCAE9A"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleHome"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <!--Arama -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputSearchLayout"
+            android:layout_marginTop="12dp"
+            style="@style/App.TextInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeSubString">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchInput"
+                android:hint="@string/heritage_izmir"
+                android:inputType="textPersonName"
+                android:imeOptions="actionNext"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="15dp"
+                android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Yatay Filtre Chip Group-->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputSearchLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                app:checkedChip="@+id/chipAll">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipAll"
+                    style="@style/CustomChipStyle"
+                    android:text="@string/all" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipHistory"
+                    style="@style/CustomChipStyle"
+                    android:text="@string/history" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipNature"
+                    style="@style/CustomChipStyle"
+                    android:text="@string/view" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFood"
+                    style="@style/CustomChipStyle"
+                    android:text="@string/flavor" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSea"
+                    style="@style/CustomChipStyle"
+                    android:text="@string/sea" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

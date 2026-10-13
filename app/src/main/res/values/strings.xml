@@ -20,4 +20,16 @@
     <string name="text_has_account">Zaten bir hesabın var mı?</string>
     <string name="action_login">Giriş Yap</string>
 
+    <string name="discover_izmir">İzmir\'i Keşfet</string>
+    <string name="home_sub_string">Geçmişin İzinde, Kendi Hikâyeni Yaz.</string>
+    <string name="heritage_izmir">İzmir\'in miraslarında ara...</string>
+    <string name="all">Tümü</string>
+    <string name="history">Tarih</string>
+    <string name="view">Manzara</string>
+    <string name="flavor">Lezzet</string>
+    <string name="sea">Deniz</string>
+    <string name="place_image_desc">resim açıklaması</string>
+    <string name="add_to_favorites">Favori Butonu</string>
+    <string name="add_to_route">yol ekle</string>
+
 </resources>
