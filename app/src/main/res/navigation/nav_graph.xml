@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_homeFragment_to_placeDetailFragment"
             app:destination="@id/placeDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/placeDetailFragment"
@@ -43,4 +46,9 @@
             android:id="@+id/action_placeDetailFragment_self"
             app:destination="@id/placeDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.arch_izmir.ui.auth.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>

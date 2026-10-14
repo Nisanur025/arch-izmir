@@ -46,4 +46,8 @@
     <string name="history_description">Tarihçe</string>
     <string name="route_add">Rotaya Ekle</string>
 
+    <string name="favorites">Favorilerim</string>
+    <string name="fav_substring">Her favori, yeni bir hikâyenin ilk adımı</string>
+    <string name="fav_count">0 Kayıtlı Yer</string>
+
 </resources>
