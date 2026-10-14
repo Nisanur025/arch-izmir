@@ -11,4 +11,5 @@ data class Place(
     val isAddedToRoad :Boolean = false, // rotaya ekleme
     val description : String, // Detail sayfaasındaki mavi tarihçe kartı
     val audioGuideSubtitle: String? = null, // Detail sayfasındaki Sesli anlatım Alt Başlık, sesli anlatım olmayanlar için nullable
+    val distanceKm: Double = 0.0,
 )
