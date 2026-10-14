@@ -18,7 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="12dp"
-            app:drawableTint="@color/antik" />
+            app:drawableStartCompat="@drawable/ic_paper_history"
+            app:drawableTint="@color/antik"
+            android:text="@string/history_description"
+            />
 
         <TextView
             android:id="@+id/tvCardBody"

@@ -35,5 +35,9 @@
         android:id="@+id/placeDetailFragment"
         android:name="com.example.arch_izmir.ui.auth.PlaceDetailFragment"
         android:label="fragment_place_detail"
-        tools:layout="@layout/fragment_place_detail" />
+        tools:layout="@layout/fragment_place_detail" >
+        <argument
+            android:name="placeId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

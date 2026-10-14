@@ -51,8 +51,7 @@ class PlaceAdapter(
 
         // Kartın kendisine tıkladığında
         holder.itemView.setOnClickListener {
-            //TODO : fragment geçişi eklenecek
-            //onItemClick(place)
+            onItemClick(place)
         }
 
         // Rotaya Ekle Butonuna tıklandığında

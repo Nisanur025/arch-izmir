@@ -6,10 +6,12 @@
     import android.view.LayoutInflater
     import android.view.View
     import android.view.ViewGroup
+    import androidx.navigation.fragment.findNavController
     import androidx.recyclerview.widget.RecyclerView
     import androidx.recyclerview.widget.StaggeredGridLayoutManager
     import com.example.arch_izmir.R
     import com.example.arch_izmir.data.model.Place
+    import com.example.arch_izmir.data.repository.PlaceRepository
     import com.example.arch_izmir.databinding.FragmentHomeBinding
     import com.example.arch_izmir.ui.adapter.PlaceAdapter
 
@@ -17,24 +19,6 @@
     class HomeFragment : Fragment() {
         private lateinit var binding: FragmentHomeBinding
 
-        // Adapter
-        private var placeAdapter = PlaceAdapter(
-            placeList = samplePlaces(),
-            onAddClick = {place -> /*Rotaya ekle*/ },
-            onFavoriteClick = {place -> /*Favorilere ekle*/},
-            onItemClick={place -> /*Detay sayfasına git*/}
-        )
-
-        private fun samplePlaces(): List<Place>{
-
-            return listOf(
-                Place(1,"Efes Antik Kenti","Selçuk",R.drawable.img_efes_antik_kenti),
-                Place(2,"Saat Kulesi","Konak",R.drawable.img_konak),
-                Place(3,"Meryem Ana Kilisesi","Selçuk",R.drawable.img_meryem_ana),
-                Place(4,"Agora Ören Yeri","Konak-Namazgah",R.drawable.img_agora)
-
-            )
-        }
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
 
@@ -54,6 +38,16 @@
             }
         }
 
+        // Adapter
+        private var placeAdapter = PlaceAdapter(
+            placeList = PlaceRepository.places,
+            onAddClick = {place -> /*Rotaya ekle*/ },
+            onFavoriteClick = {place -> /*Favorilere ekle*/},
+            onItemClick={place ->
+                val action = HomeFragmentDirections.actionHomeFragmentToPlaceDetailFragment(place.id)
+                findNavController().navigate(action)
+            }
+        )
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
