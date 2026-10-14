@@ -70,4 +70,65 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">18dp</item>
     </style>
+
+    <style name="Widget.App.CircleIconButton" parent="">
+        <item name="android:background">@drawable/bg_circle_dark</item>
+        <item name="android:elevation">6dp</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="Widget.App.InfoCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">#304362</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="Widget.App.GuideCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/transparent</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="rippleColor">#33D9A84E</item>
+        <item name="strokeColor">#D9A84E</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="TextAppearance.App.PlaceTitle" parent="">
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="TextAppearance.App.PlaceLocation" parent="">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="drawableStartCompat">@drawable/ic_place</item>
+        <item name="drawableTint">@color/gun_batimi_turuncu</item>
+    </style>
+
+    <!-- Tarihçe kartı başlığı -->
+    <style name="TextAppearance.App.CardTitle" parent="">
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/chip_bg_selected</item>
+    </style>
+
+    <!-- Yerinde Rehber başlığı -->
+    <style name="TextAppearance.App.GuideTitle" parent="">
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/chip_bg_selected</item>
+    </style>
+
+    <style name="TextAppearance.App.SectionTitle" parent="">
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/antik</item>
+    </style>
 </resources>

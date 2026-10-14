@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#14111C"
+    android:overScrollMode="never"
+    tools:context=".ui.auth.PlaceDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header: resim + yarı taşan butonlar -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivCover"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#1E1A2B"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="H,16:10"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/img_efes_antik_kenti" />
+
+            <!--Geri Butonu-->
+            <ImageButton
+                android:id="@+id/btnBack"
+                style="@style/Widget.App.CircleIconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="-24dp"
+                android:contentDescription="@string/backBtn"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCover" />
+
+            <!--Favori Butonu-->
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                style="@style/Widget.App.CircleIconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="-24dp"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/add_to_favorites"
+                android:src="@drawable/selector_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCover" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp">
+
+            <!--Başlık-->
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextAppearance.App.PlaceTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Baslık" />
+
+            <!--Konum-->
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@style/TextAppearance.App.PlaceLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:text="Konum" />
+
+            <!-- Tarihçe (çoğaltılabilir kart) -->
+            <include
+                android:id="@+id/cardHistory"
+                layout="@layout/view_info_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
+
+            <!-- sesli rehber -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnYerindeRehber"
+                style="@style/Widget.App.GuideCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_guide_btn"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/ivRehberIcon"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_headphones"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/gul_kurusu" />
+
+                    <TextView
+                        android:id="@+id/tvRehberTitle"
+                        style="@style/TextAppearance.App.GuideTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="@string/audioGuide"
+                        app:layout_constraintEnd_toStartOf="@id/ivRehberChevron"
+                        app:layout_constraintStart_toEndOf="@id/ivRehberIcon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvRehberDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="altBaslik"
+                        android:textColor="@color/textColor"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="@id/tvRehberTitle"
+                        app:layout_constraintStart_toStartOf="@id/tvRehberTitle"
+                        app:layout_constraintTop_toBottomOf="@id/tvRehberTitle" />
+
+                    <ImageView
+                        android:id="@+id/ivRehberChevron"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/gul_kurusu" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Hızlı aksiyonlar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMemory"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/memory_lock"
+                    android:textColor="@android:color/white"
+                    app:icon="@drawable/ic_badge"
+                    app:iconSize="25dp"
+                    app:iconTint="@color/gul_kurusu"
+                    app:strokeColor="#334155" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddRoute"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#D4AF37"
+                    android:padding="14dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/route_add"
+                    android:textColor="#0F172A"
+                    app:icon="@drawable/ic_plus"
+                    app:iconTint="@color/black" />
+            </LinearLayout>
+
+            <!-- Yakındaki mekânlar -->
+            <TextView
+                style="@style/TextAppearance.App.SectionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/nearby_place" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNearby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/rv_item_nearby_place" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

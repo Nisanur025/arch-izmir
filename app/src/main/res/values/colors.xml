@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent_black">#58000000</color>
+    <color name="transparent">#00000000</color>
     <color name="alacakaranlik_moru">#6A5A82</color>
     <color name="lavanta_sisi">#E3DDEE</color>
     <color name="gul_kurusu">#F1D5D6</color>
@@ -28,5 +29,7 @@
     <color name="card_cream">#FAEFD4</color>
     <color name="glow_gold">#E8C77A</color>
     <color name="glow_gold_soft">#80E8C77A</color>
+
+    <color name="textColor">#F3E7C9</color>
 
 </resources>

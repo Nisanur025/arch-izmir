@@ -39,4 +39,11 @@
     <string name="passport">Pasaport</string>
     <string name="rememberMe">Beni hatırla</string>
 
+    <string name="backBtn">Geri Tuşu</string>
+    <string name="audioGuide">Sesli Rehber</string>
+    <string name="memory_lock">Hatıra Kilidi Aç</string>
+    <string name="nearby_place">Yakındaki Mekanlar</string>
+    <string name="history_description">Tarihçe</string>
+    <string name="route_add">Rotaya Ekle</string>
+
 </resources>
