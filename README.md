@@ -14,6 +14,11 @@
     <td align="center" valign="top"><img src="screenshots/register.png" height="480" /><br/><b>Kayıt</b></td>
     <td align="center" valign="top"><img src="screenshots/home.png" height="480" /><br/><b>Ana Sayfa</b></td>
   </tr>
+   <tr>
+    <td align="center" valign="top"><img src="screenshots/place_detail_1.png" height="480" /><br/><b>Detay Sayfası</b></td>
+    <td align="center" valign="top"><img src="screenshots/place_detail_2.png" height="480" /><br/><b>Detay Sayfası</b></td>
+    <td align="center" valign="top"><img src="screenshots/favorite.png" height="480" /><br/><b>Favori</b></td>
+  </tr>
 </table>
 ---
 
