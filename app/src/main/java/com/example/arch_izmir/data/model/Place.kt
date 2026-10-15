@@ -7,7 +7,7 @@ data class Place(
     val name: String,
     val district : String, // Semt Bilgisi
     @DrawableRes val imageRes: Int,
-    val isFavorite : Boolean = false, // Favorilere Ekleme
+    var isFavorite : Boolean = false, // Favorilere Ekleme
     val isAddedToRoad :Boolean = false, // rotaya ekleme
     val description : String, // Detail sayfaasındaki mavi tarihçe kartı
     val audioGuideSubtitle: String? = null, // Detail sayfasındaki Sesli anlatım Alt Başlık, sesli anlatım olmayanlar için nullable

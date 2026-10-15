@@ -17,7 +17,9 @@
 
 
     class HomeFragment : Fragment() {
-        private lateinit var binding: FragmentHomeBinding
+        private var _binding: FragmentHomeBinding? = null
+        private val binding get() = _binding!!
+        private lateinit var placeAdapter: PlaceAdapter
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -28,7 +30,7 @@
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View {
-            binding = FragmentHomeBinding.inflate(inflater, container, false)
+           _binding = FragmentHomeBinding.inflate(inflater, container, false)
             return binding.root
         }
 
@@ -38,19 +40,28 @@
             }
         }
 
-        // Adapter
-        private var placeAdapter = PlaceAdapter(
-            placeList = PlaceRepository.places,
-            onAddClick = {place -> /*Rotaya ekle*/ },
-            onFavoriteClick = {place -> /*Favorilere ekle*/},
-            onItemClick={place ->
-                val action = HomeFragmentDirections.actionHomeFragmentToPlaceDetailFragment(place.id)
-                findNavController().navigate(action)
-            }
-        )
+
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            PlaceRepository.init(requireContext())
+
+            // Adapter
+            placeAdapter = PlaceAdapter(
+                placeList = PlaceRepository.places,
+                onAddClick = { place ->
+                    // TODO: rotaya eklenecek
+                },
+                onFavoriteClick = { place ->
+                    PlaceRepository.toggleFavorite(place)
+                    placeAdapter.notifyDataSetChanged() // kalbi günceller
+                },
+                onItemClick = { place ->
+                    val action = HomeFragmentDirections.actionHomeFragmentToPlaceDetailFragment(place.id)
+                    findNavController().navigate(action)
+                }
+            )
 
             // rv adapter bağla
             binding.rvPlaces.apply {
@@ -62,6 +73,13 @@
             }
 
         }
-
-
+        // Favoriler sayfasında kalp kaldırılıp geri dönünce Home güncellensin
+        override fun onResume() {
+            super.onResume()
+            placeAdapter.notifyDataSetChanged()
+        }
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
     }

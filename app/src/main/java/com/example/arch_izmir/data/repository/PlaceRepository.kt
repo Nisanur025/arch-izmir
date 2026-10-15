@@ -1,6 +1,9 @@
 package com.example.arch_izmir.data.repository
 
+import android.content.Context
 import com.example.arch_izmir.R
+import com.example.arch_izmir.data.local.FavoritesManager
+import com.example.arch_izmir.data.local.SessionAdministrator
 import com.example.arch_izmir.data.model.Place
 
 object PlaceRepository {
@@ -53,6 +56,67 @@ object PlaceRepository {
             distanceKm = 9.0
         )
     )
+
+    // Favori liste tanım
+    val favoritePlaces = mutableListOf<Place>()
+    private var favoritesManager: FavoritesManager? = null
+
+    private fun loadFavoritesFromPrefs(){
+        val savedIds = favoritesManager?.getFavoriteIds() ?: return
+        favoritePlaces.clear()
+        for (place in places) {
+            // Eğer kaydedilen ID'ler arasında bu mekanın ID'si varsa favori yap
+            if (savedIds.contains(place.id.toString())) {
+                place.isFavorite = true
+                if (!favoritePlaces.contains(place)) {
+                    favoritePlaces.add(place)
+                }
+            } else {
+                place.isFavorite = false
+            }
+        }
+    }
+
+    fun toggleFavorite(place: Place){
+        if(place.isFavorite){
+            // Favorilerdeyse Çıkart
+            place.isFavorite=false
+            favoritePlaces.remove(place)
+        }
+        else{
+            // değilse ekle
+            place.isFavorite = true
+            favoritePlaces.add(place)
+        }
+        saveFavoritesToPrefs()
+    }
+
+    private fun saveFavoritesToPrefs(){
+        val idSet = favoritePlaces.map { it.id.toString() }.toSet()
+        favoritesManager?.saveFavoriteIds(idSet)
+    }
+
+    private var currentEmail = ""
+    fun init(context: Context){
+        val sessionAdmin = SessionAdministrator(context)
+        val currentUserEmail = sessionAdmin.userEmail() // oturum açan kullanıcının emaili
+
+        // kullanıcı giriş yapmışsa ona özel dosya oluştur
+        if (currentUserEmail.isNotEmpty()){
+            if(favoritesManager == null || currentEmail !=currentUserEmail){
+                currentEmail = currentUserEmail
+                favoritesManager = FavoritesManager(context,currentEmail)
+                loadFavoritesFromPrefs()
+            }
+        }else{
+            // Oturum açan kimse yoksa favorileri temizle
+            favoritePlaces.clear()
+            for (place in places) {
+                place.isFavorite = false
+            }
+        }
+    }
+
 
     fun getById(id:Int): Place? {
         return places.find{it.id == id}
