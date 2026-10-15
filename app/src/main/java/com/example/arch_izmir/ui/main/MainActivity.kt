@@ -24,18 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        // bottom geçişi
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Sistem çubuğu için boşluk bırak
-        val extraTop = (5 * resources.displayMetrics.density).toInt()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavView) { v, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updatePadding(top = extraTop, bottom = (bars.bottom * 0.4f).toInt())
-            insets
-        }
 
-            binding.bottomNavView.setupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
 
         // Login ve Register ekranlarında Bottom menu gizlenecek
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -53,6 +47,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavView) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            // Sistem çubuğu boşluğunu korurken üst boşluğu sabit tutuyoruz
+            v.updatePadding(
+                top = (5 * resources.displayMetrics.density).toInt(),
+                bottom = bars.bottom // Sistem çubuğu ile çakışmayı önler
+            )
+            insets
+        }
 
 
     }
