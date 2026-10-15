@@ -5,13 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.arch_izmir.R
 import com.example.arch_izmir.data.repository.PlaceRepository
 import com.example.arch_izmir.databinding.FragmentPlaceDetailBinding
 import com.example.arch_izmir.ui.adapter.NearbyPlacesAdapter
@@ -47,6 +42,15 @@ class PlaceDetailFragment : Fragment() {
         binding.tvRehberDesc.text = place.audioGuideSubtitle
         binding.ivCover.setImageResource(place.imageRes)
 
+        // favori kontrolü
+        binding.btnFavorite.isSelected = place.isFavorite
+
+        binding.btnFavorite.setOnClickListener {
+            PlaceRepository.toggleFavorite(place)
+            binding.btnFavorite.isSelected=place.isFavorite
+        }
+
+        // Geri Butonu
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
