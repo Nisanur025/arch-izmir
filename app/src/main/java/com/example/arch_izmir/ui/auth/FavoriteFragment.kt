@@ -6,15 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.arch_izmir.R
 import com.example.arch_izmir.data.repository.PlaceRepository
-import com.example.arch_izmir.databinding.ActivityMainBinding
 import com.example.arch_izmir.databinding.FragmentFavoriteBinding
 import com.example.arch_izmir.ui.adapter.PlaceAdapter
-import com.example.arch_izmir.ui.auth.HomeFragment.SpacingDecoration
-import java.time.ZoneId
 
 
 class FavoriteFragment : Fragment() {
@@ -48,7 +43,8 @@ class FavoriteFragment : Fragment() {
                 favoriteAdapter.notifyDataSetChanged()
             },
             onItemClick = { place ->
-                // TODO :Detail Fragemnta geçilecek
+                val action = FavoriteFragmentDirections.actionFavoriteFragmentToPlaceDetailFragment(place.id)
+                findNavController().navigate(action)
             }
         )
         binding.rvPlacesFavorite.apply {
