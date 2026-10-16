@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#14111C"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Başlık satırı -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="@string/izmir_guide"
+                android:textColor="#F3E7C9"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="@string/izmir_guide_subtitle"
+                android:textColor="#F3E7C9"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tvClear"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:textColor="@color/gun_batimi_turuncu"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Mesaj listesi -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"/>
+
+    <!-- Hızlı sorular (yatay kaydırma) -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/chipContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipArrive"
+                style="@style/CustomChipStyle"
+                android:text="@string/how_do_get_izmir" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTransport"
+                style="@style/CustomChipStyle"
+                android:text="@string/how_do_get_around" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipVisit"
+                style="@style/CustomChipStyle"
+                android:text="@string/places_to_visit" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipFood"
+                style="@style/CustomChipStyle"
+                android:text="@string/what_to_eat" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipKemeralti"
+                style="@style/CustomChipStyle"
+                android:text="@string/kemeraltı" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipKordon"
+                style="@style/CustomChipStyle"
+                android:text="@string/kordon" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Mesaj yazma alanı (Material Card + TextInputLayout ) -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardBackgroundColor="@drawable/bg_bottom_nav"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:layout_marginTop="4dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:boxBackgroundMode="none"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_message_input"
+                    android:hint="@string/ask_something"
+                    android:inputType="text|textCapSentences"
+                    android:maxLines="5"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/antik"
+                    android:textColorHint="@color/korfez_grisi"
+                    android:textSize="15sp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSend"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                app:backgroundTint="@color/gun_batimi_turuncu"
+                app:icon="@drawable/ic_send"
+                app:iconTint="@color/black"
+                android:contentDescription="@string/ask_btn" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

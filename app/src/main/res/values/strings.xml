@@ -49,5 +49,19 @@
     <string name="favorites">Favorilerim</string>
     <string name="fav_substring">Her favori, yeni bir hikâyenin ilk adımı</string>
     <string name="fav_count">0 Kayıtlı Yer</string>
+   
+    <string name="izmir_guide">İzmir Rehberi</string>
+    <string name="izmir_guide_subtitle">Sık sorulanlara dokun ya da yaz</string>
+    <string name="clear">Temizle</string>
+    <string name="ask_something">Bir şey sor...</string>
+    <string name="ask_btn">Gönder butonu</string>
+    <string name="kordon">Kordon</string>
+    <string name="kemeraltı">Kemeraltı</string>
+    <string name="what_to_eat">Nerede yemek yenir?</string>
+    <string name="places_to_visit">Gezilecek yerler</string>
+    <string name="how_do_get_around">Şehir içinde nasıl dolaşırım?</string>
+    <string name="how_do_get_izmir">İzmir\'e nasıl gelirim?</string>
+
+
 
 </resources>
