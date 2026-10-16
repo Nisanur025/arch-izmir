@@ -34,7 +34,7 @@
             android:id="@+id/action_homeFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_guideFragment"
+            android:id="@+id/action_homeFragment_to_guideFragment2"
             app:destination="@id/guideFragment" />
     </fragment>
     <fragment
@@ -61,5 +61,6 @@
     <fragment
         android:id="@+id/guideFragment"
         android:name="com.example.arch_izmir.ui.auth.GuideFragment"
-        android:label="GuideFragment" />
+        android:label="GuideFragment"
+        tools:layout="@layout/fragment_guide"/>
 </navigation>
