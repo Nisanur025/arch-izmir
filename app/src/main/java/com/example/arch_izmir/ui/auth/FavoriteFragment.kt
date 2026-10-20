@@ -41,6 +41,7 @@ class FavoriteFragment : Fragment() {
             onFavoriteClick ={ place ->
                 PlaceRepository.toggleFavorite(place)
                 favoriteAdapter.notifyDataSetChanged()
+                updateFavoriteCounter()
             },
             onItemClick = { place ->
                 val action = FavoriteFragmentDirections.actionFavoriteFragmentToPlaceDetailFragment(place.id)
@@ -55,6 +56,11 @@ class FavoriteFragment : Fragment() {
             addItemDecoration(HomeFragment.SpacingDecoration((6 * resources.displayMetrics.density).toInt()))
         }
 
+        updateFavoriteCounter()
+    }
+    private fun updateFavoriteCounter(){
+        val count = favoriteAdapter.itemCount
+        binding.counter.text = "$count Kayıtlı Yer"
     }
 
     override fun onResume() {
