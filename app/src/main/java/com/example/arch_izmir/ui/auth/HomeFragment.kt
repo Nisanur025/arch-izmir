@@ -2,6 +2,8 @@
 
     import android.graphics.Rect
     import android.os.Bundle
+    import android.text.Editable
+    import android.text.TextWatcher
     import androidx.fragment.app.Fragment
     import android.view.LayoutInflater
     import android.view.View
@@ -9,8 +11,6 @@
     import androidx.navigation.fragment.findNavController
     import androidx.recyclerview.widget.RecyclerView
     import androidx.recyclerview.widget.StaggeredGridLayoutManager
-    import com.example.arch_izmir.R
-    import com.example.arch_izmir.data.model.Place
     import com.example.arch_izmir.data.repository.PlaceRepository
     import com.example.arch_izmir.databinding.FragmentHomeBinding
     import com.example.arch_izmir.ui.adapter.PlaceAdapter
@@ -72,6 +72,13 @@
                 addItemDecoration(SpacingDecoration((6 * resources.displayMetrics.density).toInt()))
             }
 
+            binding.etSearch.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    placeAdapter.filter(s.toString())
+                }
+                override fun afterTextChanged(s: Editable?) {}
+            })
         }
         // Favoriler sayfasında kalp kaldırılıp geri dönünce Home güncellensin
         override fun onResume() {

@@ -1,16 +1,13 @@
 package com.example.arch_izmir.ui.adapter
 
-import android.text.Layout
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arch_izmir.R
 import com.example.arch_izmir.data.model.Place
 import com.example.arch_izmir.databinding.RvItemHomeBinding
+import java.util.Locale
 
 class PlaceAdapter(
     private val placeList: List<Place>, // listede gösterilecek mekanlar
@@ -19,6 +16,8 @@ class PlaceAdapter(
     private val onItemClick:(Place) -> Unit // Kartın kendisine tıklanınca
     ): RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
 
+        // Filtelenmiş öğeleri içinde tutan liste
+        private var filteredList : List<Place> = placeList
     class PlaceViewHolder(val binding: RvItemHomeBinding): RecyclerView.ViewHolder(binding.root)
 
 
@@ -30,7 +29,8 @@ class PlaceAdapter(
 
     // tıklama işlemleri ve verilerin aktarıldığı yer
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
-        val place= placeList[position]// Sıradaki mekan verisi
+        val place = filteredList[position]// Sıradaki mekan verisi
+
 
         // verileri arayüz elemanlarına yazdır
         holder.binding.imgPlace.setImageResource(place.imageRes)
@@ -60,9 +60,32 @@ class PlaceAdapter(
         }
     }
 
+
+// Dışarıdan yeni liste
+    fun updateList(newList: List<Place>) {
+        filteredList = newList
+        notifyDataSetChanged()
+    }
+    // Arama filtreleme fonksiyonu
+    fun filter(query: String) {
+        filteredList = if (query.isEmpty()) {
+            placeList // Arama boşsa tüm listeyi göster
+        } else {
+            val resultList = ArrayList<Place>()
+            for (place in placeList) {
+                if (place.name.lowercase(Locale.getDefault()).contains(query.lowercase(Locale.getDefault())) ||
+                    place.district.lowercase(Locale.getDefault()).contains(query.lowercase(Locale.getDefault()))) {
+                    resultList.add(place)
+                }
+            }
+            resultList
+        }
+        notifyDataSetChanged() // RecyclerView'ı yenile
+    }
+
     //Listede eleman sayısı
     override fun getItemCount(): Int {
-        return placeList.size
+        return filteredList.size
     }
 
 }
