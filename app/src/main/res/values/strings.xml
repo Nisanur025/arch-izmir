@@ -49,7 +49,7 @@
     <string name="favorites">Favorilerim</string>
     <string name="fav_substring">Her favori, yeni bir hikâyenin ilk adımı</string>
     <string name="fav_count">0 Kayıtlı Yer</string>
-   
+
     <string name="izmir_guide">İzmir Rehberi</string>
     <string name="izmir_guide_subtitle">Sık sorulanlara dokun ya da yaz</string>
     <string name="clear">Temizle</string>
@@ -62,6 +62,27 @@
     <string name="how_do_get_around">Şehir içinde nasıl dolaşırım?</string>
     <string name="how_do_get_izmir">İzmir\'e nasıl gelirim?</string>
 
-
+    <string name="add_place">Mekan ekleyip akıllıca gez</string>
+    <string name="title_route">Rotam</string>
+    <string name="route_null">Rotan Boş</string>
+    <string name="car_Text">araçla · 73.4 km · 1 sa 13 dk</string>
+    <string name="counter">1</string>
+    <string name="counter_2">2</string>
+    <string name="efes">Efes Antik Kenti</string>
+    <string name="efes_road">Selçuk · ~60 dk ziyaret</string>
+    <string name="btn_up">yukarı buton</string>
+    <string name="btn_down">aşağı buton</string>
+    <string name="clear_route">Rotayı Temizle</string>
+    <string name="start_place">Konumumdan Başla</string>
+    <string name="smart_order">Akıllı Sırala</string>
+    <string name="start_place_2">2 durak • başlangıç: Konak Meydanı</string>
+    <string name="km">146.9 km</string>
+    <string name="road">Yol</string>
+    <string name="time">2 sa 27 dk</string>
+    <string name="time_sum">4 sa 27 dk</string>
+    <string name="sum">Toplam</string>
+    <string name="map">Harita</string>
+    <string name="travel">Yolculuk</string>
+    <string name="route_description">Bir mekânın sayfasında “Rotaya ekle”ye dokun ya da kartlardaki ＋ simgesini kullan.</string>
 
 </resources>

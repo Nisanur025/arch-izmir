@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- İki durak arasındaki yolculuk bilgisi ve kesikli çizgi (İlk durakta gizlenecek) -->
+    <LinearLayout
+        android:id="@+id/layoutTransitInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="24dp"
+        android:layout_marginVertical="4dp">
+
+        <!--dikey çizgi -->
+        <View
+            android:layout_width="2dp"
+            android:layout_height="32dp"
+            android:background="#2C353D" />
+
+        <!-- Ulaşım türü, mesafe ve süre açıklaması -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTransitDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:text="@string/car_Text"
+            android:textColor="@color/antik"
+            android:drawableStart="@drawable/ic_car"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/antik"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Durak Kartı -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#1E1A29"
+        app:cardCornerRadius="16dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#2C263B">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Durak Numarası Dairesi (1, 2, 3...) -->
+            <TextView
+                android:id="@+id/tvStopNumber"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_route_circle_teal"
+                android:gravity="center"
+                android:text="@string/counter"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Mekan Adı ve Alt Detay (İlçe, Ziyaret Süresi) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnMoveUp"
+                app:layout_constraintStart_toEndOf="@id/tvStopNumber"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPlaceTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/efes"
+                    android:textColor="#F3E7C9"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPlaceSubtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/efes_road"
+                    android:textColor="@color/antik"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Yukarı Taşı Butonu  -->
+            <ImageButton
+                android:id="@+id/btnMoveUp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/arrow_up_float"
+                app:tint="@color/card_cream"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnMoveDown"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/btn_up"/>
+
+            <!-- Aşağı Taşı Butonu -->
+            <ImageButton
+                android:id="@+id/btnMoveDown"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/arrow_down_float"
+                app:tint="@color/card_cream"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/btn_down"/>
+
+            <!-- Sil Butonu -->
+            <ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:tint="#FF6B6B"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/clear"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
