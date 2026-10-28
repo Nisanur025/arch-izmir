@@ -12,4 +12,6 @@ data class Place(
     val description : String, // Detail sayfaasındaki mavi tarihçe kartı
     val audioGuideSubtitle: String? = null, // Detail sayfasındaki Sesli anlatım Alt Başlık, sesli anlatım olmayanlar için nullable
     val distanceKm: Double = 0.0,
+    val latitude: Double = 38.4192,
+    val longitude: Double = 27.1287
 )

@@ -5,12 +5,13 @@ import androidx.room3.Database
 import androidx.room3.Room
 import androidx.room3.RoomDatabase
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import com.example.arch_izmir.data.model.RouteStop
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, RouteStop::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
-
+    abstract fun routeDao(): RouteDao
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
 
@@ -18,9 +19,11 @@ abstract class AppDatabase : RoomDatabase() {
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder<AppDatabase>(
                     context.applicationContext,
+                    AppDatabase::class.java,
                     "app_database"
                 )
                     .setDriver(BundledSQLiteDriver())
+                    .fallbackToDestructiveMigration()
                     .build()
                     .also { INSTANCE = it }
             }

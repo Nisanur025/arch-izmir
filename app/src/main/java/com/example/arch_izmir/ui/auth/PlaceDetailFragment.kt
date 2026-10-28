@@ -5,11 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.arch_izmir.data.local.AppDatabase
+import com.example.arch_izmir.data.model.RouteStop
 import com.example.arch_izmir.data.repository.PlaceRepository
 import com.example.arch_izmir.databinding.FragmentPlaceDetailBinding
 import com.example.arch_izmir.ui.adapter.NearbyPlacesAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class PlaceDetailFragment : Fragment() {
@@ -73,6 +83,42 @@ class PlaceDetailFragment : Fragment() {
             binding.tvRehberDesc.text = place.audioGuideSubtitle
         } else {
             binding.btnYerindeRehber.visibility = View.GONE
+        }
+
+
+        // Rotaya Ekle butonu
+        binding.btnAddRoute.setOnClickListener {
+            val placeName = place.name
+            val placeLocation = place.district
+            val visitDuration = "~ 60 dk ziyaret"
+            val placeLatitude = place.latitude
+            val placeLongitude = place.longitude
+
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                val db = AppDatabase.getInstance(requireContext())
+                val routeDao = db.routeDao()
+
+                // Mevcut durak sayısını al
+                val currentCount = routeDao.getRouteCount()
+
+                // Yeni durağı oluştur
+                val newStop = RouteStop(
+                    title = placeName,
+                    location = placeLocation,
+                    visitDuration = visitDuration,
+                    latitude = placeLatitude,
+                    longitude = placeLongitude,
+                    orderIndex = currentCount + 1
+                )
+
+                // Veritabanına ekle
+                routeDao.insertStop(newStop)
+
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "$placeName rotaya eklendi!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
     override fun onDestroyView() {

@@ -69,7 +69,7 @@
     <string name="counter">1</string>
     <string name="counter_2">2</string>
     <string name="efes">Efes Antik Kenti</string>
-    <string name="efes_road">Selçuk · ~60 dk ziyaret</string>
+    <string name="efes_road">Selçuk</string>
     <string name="btn_up">yukarı buton</string>
     <string name="btn_down">aşağı buton</string>
     <string name="clear_route">Rotayı Temizle</string>
@@ -83,6 +83,7 @@
     <string name="sum">Toplam</string>
     <string name="map">Harita</string>
     <string name="travel">Yolculuk</string>
+    <string name="duration">~60 dk ziyaret</string>
     <string name="route_description">Bir mekânın sayfasında “Rotaya ekle”ye dokun ya da kartlardaki ＋ simgesini kullan.</string>
 
 </resources>

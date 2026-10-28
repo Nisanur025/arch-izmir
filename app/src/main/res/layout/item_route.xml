@@ -92,6 +92,15 @@
                     android:text="@string/efes_road"
                     android:textColor="@color/antik"
                     android:textSize="13sp" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvVisitDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/duration"
+                    android:textColor="@color/antik"
+                    android:textSize="13sp" />
+
             </LinearLayout>
 
             <!-- Yukarı Taşı Butonu  -->
