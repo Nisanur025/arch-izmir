@@ -14,7 +14,7 @@
         android:title="@string/ai_guide"/>
 
     <item
-        android:id="@+id/routeFragment"
+        android:id="@+id/addRouteFragment"
         android:checked="false"
         android:icon="@drawable/ic_map"
         android:title="@string/route"/>
