@@ -100,7 +100,7 @@ class PlaceDetailFragment : Fragment() {
                 val routeDao = db.routeDao()
 
                 // Mevcut durak sayısını al
-                val currentCount = routeDao.getRouteCount()
+                val currentCount = routeDao.getMaxOrderIndex() +1
 
                 // Yeni durağı oluştur
                 val newStop = RouteStop(
@@ -109,7 +109,7 @@ class PlaceDetailFragment : Fragment() {
                     visitDuration = visitDuration,
                     latitude = placeLatitude,
                     longitude = placeLongitude,
-                    orderIndex = currentCount + 1
+                    orderIndex = currentCount
                 )
 
                 // Veritabanına ekle

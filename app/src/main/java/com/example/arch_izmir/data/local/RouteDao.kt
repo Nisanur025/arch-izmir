@@ -4,6 +4,7 @@ import androidx.room3.Dao
 import androidx.room3.Insert
 import androidx.room3.OnConflictStrategy
 import androidx.room3.Query
+import androidx.room3.Transaction
 import com.example.arch_izmir.data.model.RouteStop
 import kotlinx.coroutines.flow.Flow
 
@@ -25,4 +26,16 @@ interface RouteDao {
     // Tüm rotayı  temizlemek için
     @Query("DELETE FROM route_stops")
     suspend fun deleteAllStops()
+
+    @Query("UPDATE route_stops SET orderIndex = :newOrderIndex WHERE id = :stopId")
+    suspend fun updateOrderIndex(stopId: Int, newOrderIndex: Int)
+
+    @Transaction
+    suspend fun saveOrder(stops : List<RouteStop>){
+        stops.forEachIndexed { index, stop ->
+            updateOrderIndex(stop.id,index)
+        }
+    }
+    @Query("SELECT COALESCE(MAX(orderIndex), -1) FROM route_stops")
+    suspend fun getMaxOrderIndex(): Int
 }

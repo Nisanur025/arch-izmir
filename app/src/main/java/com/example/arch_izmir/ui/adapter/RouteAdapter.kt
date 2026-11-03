@@ -8,7 +8,9 @@ import com.example.arch_izmir.databinding.ItemRouteBinding
 
 class RouteAdapter(
     private var stopList : List<RouteStop>,
-    private val onDeleteClick : (RouteStop) -> Unit
+    private val onDeleteClick : (RouteStop) -> Unit,
+    private val onMoveUp: (Int) -> Unit,
+    private val onMoveDown: (Int) -> Unit
 ): RecyclerView.Adapter<RouteAdapter.RouteViewHolder>() {
     inner class RouteViewHolder(private val binding: ItemRouteBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(stop: RouteStop, position: Int){
@@ -17,6 +19,18 @@ class RouteAdapter(
             binding.tvPlaceSubtitle.text = stop.location
             binding.tvVisitDuration.text = stop.visitDuration
             binding.btnDelete.setOnClickListener { onDeleteClick(stop) }
+            binding.btnMoveUp.setOnClickListener {
+                val pos = bindingAdapterPosition
+                if(pos != RecyclerView.NO_POSITION){
+                    onMoveUp(pos)
+                }
+            }
+            binding.btnMoveDown.setOnClickListener {
+                val pos = bindingAdapterPosition
+                if(pos != RecyclerView.NO_POSITION){
+                    onMoveDown(pos)
+                }
+            }
         }
     }
 

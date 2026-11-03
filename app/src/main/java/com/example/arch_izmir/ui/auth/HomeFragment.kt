@@ -66,7 +66,7 @@
                     viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                         val appContext = requireContext().applicationContext
                         val routeDao = AppDatabase.getInstance(appContext).routeDao()
-                        val currentCount = routeDao.getRouteCount()
+                        val currentCount = routeDao.getMaxOrderIndex() + 1
 
                         routeDao.insertStop(
                             RouteStop(
@@ -75,7 +75,7 @@
                                 visitDuration = "~ 60 dk ziyaret",
                                 latitude = placeLatitude,
                                 longitude = placeLongitude,
-                                orderIndex = currentCount + 1
+                                orderIndex = currentCount
                             )
                         )
 
