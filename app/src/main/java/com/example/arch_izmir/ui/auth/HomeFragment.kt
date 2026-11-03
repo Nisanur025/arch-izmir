@@ -8,12 +8,19 @@
     import android.view.LayoutInflater
     import android.view.View
     import android.view.ViewGroup
+    import android.widget.Toast
+    import androidx.lifecycle.lifecycleScope
     import androidx.navigation.fragment.findNavController
     import androidx.recyclerview.widget.RecyclerView
     import androidx.recyclerview.widget.StaggeredGridLayoutManager
+    import com.example.arch_izmir.data.local.AppDatabase
+    import com.example.arch_izmir.data.model.RouteStop
     import com.example.arch_izmir.data.repository.PlaceRepository
     import com.example.arch_izmir.databinding.FragmentHomeBinding
     import com.example.arch_izmir.ui.adapter.PlaceAdapter
+    import kotlinx.coroutines.Dispatchers
+    import kotlinx.coroutines.launch
+    import kotlinx.coroutines.withContext
 
 
     class HomeFragment : Fragment() {
@@ -50,8 +57,32 @@
             // Adapter
             placeAdapter = PlaceAdapter(
                 placeList = PlaceRepository.places,
-                onAddClick = { place ->
-                    // TODO: rotaya eklenecek
+                onAddClick = { place -> // Rota Ekleme
+                    val placeName = place.name
+                    val placeLocation = place.district
+                    val placeLatitude = place.latitude
+                    val placeLongitude = place.longitude
+
+                    viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                        val appContext = requireContext().applicationContext
+                        val routeDao = AppDatabase.getInstance(appContext).routeDao()
+                        val currentCount = routeDao.getRouteCount()
+
+                        routeDao.insertStop(
+                            RouteStop(
+                                title = placeName,
+                                location = placeLocation,
+                                visitDuration = "~ 60 dk ziyaret",
+                                latitude = placeLatitude,
+                                longitude = placeLongitude,
+                                orderIndex = currentCount + 1
+                            )
+                        )
+
+                        withContext(Dispatchers.Main){
+                            Toast.makeText(appContext,"$placeName rotaya eklendi!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 },
                 onFavoriteClick = { place ->
                     PlaceRepository.toggleFavorite(place)
