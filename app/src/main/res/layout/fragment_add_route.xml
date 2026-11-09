@@ -193,7 +193,7 @@
                             android:id="@+id/tvTotalTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/time_sum"
+                            android:text="@string/stop_sum"
                             android:textColor="#F3E7C9"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -202,13 +202,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@string/sum"
+                            android:text="@string/stop"
                             android:textColor="@color/antik"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
-            <!-- Harita Önizleme Alanı -->
+            <!-- durakların büyütülmüş resimleri-->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
@@ -217,55 +217,12 @@
                 app:cardCornerRadius="16dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="#1F2E38">
-
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/efes_2"/>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_launcher_background"
-                        android:alpha="0.2"
-                        android:contentDescription="@string/map"/>
 
-                    <!-- Rota Durak İkonları Temsili -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <!-- Üst durak (2) -->
-                        <TextView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:text="@string/counter_2"
-                            android:textColor="#FFFFFF"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:background="@drawable/bg_route_circle_blue" />
-
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="40dp"
-                            android:background="#3A7B8C"
-                            android:layout_marginVertical="4dp"/>
-
-                        <!-- Alt durak (1) -->
-                        <TextView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:text="@string/counter"
-                            android:textColor="#FFFFFF"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:background="@drawable/bg_route_circle_teal" />
-                    </LinearLayout>
-
-                </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Duraklar listesi-->
@@ -274,6 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
+                android:layout_marginTop="20dp"
                 tools:listitem="@layout/item_route" />
 
             <!-- Aksiyon Butonları (Akıllı Sırala, Konumumdan Başla, Rotayı Temizle) -->

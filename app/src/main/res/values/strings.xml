@@ -79,11 +79,12 @@
     <string name="km">146.9 km</string>
     <string name="road">Yol</string>
     <string name="time">2 sa 27 dk</string>
-    <string name="time_sum">4 sa 27 dk</string>
-    <string name="sum">Toplam</string>
+    <string name="stop_sum">4</string>
+    <string name="stop">Durak</string>
     <string name="map">Harita</string>
     <string name="travel">Yolculuk</string>
     <string name="duration">~60 dk ziyaret</string>
     <string name="route_description">Bir mekânın sayfasında “Rotaya ekle”ye dokun ya da kartlardaki ＋ simgesini kullan.</string>
+    <string name="order_description">Sıralamayı değiştirmek için sürükle</string>
 
 </resources>

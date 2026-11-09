@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.arch_izmir.data.local.AppDatabase
 import com.example.arch_izmir.data.model.RouteStop
 import com.example.arch_izmir.databinding.FragmentAddRouteBinding
@@ -25,6 +27,7 @@ class AddRouteFragment : Fragment() {
     private var _binding : FragmentAddRouteBinding?= null
     private val binding get()  = _binding!!
     private lateinit var routeAdapter: RouteAdapter
+    private lateinit var itemTouchHelper: ItemTouchHelper
     private var currentStops: List<RouteStop> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +43,6 @@ class AddRouteFragment : Fragment() {
         return binding.root
     }
 
-    private fun moveStop(position: Any, value2: Any) {}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,8 +61,9 @@ class AddRouteFragment : Fragment() {
                 }
 
             },
-            onMoveUp = { position -> moveStop(position, position - 1) },
-            onMoveDown = { position -> moveStop(position, position + 1) }
+            onStartDrag = { viewHolder ->
+                itemTouchHelper.startDrag(viewHolder)
+            }
         )
 
 
@@ -97,22 +100,84 @@ class AddRouteFragment : Fragment() {
             }
         }
 
+        setupDragAndDrop()
 
     }
+    // Basılı tutunca sürükleme
 
-    // Rota sırası
-    private fun moveStop(from: Int, to: Int){
-        if(to <0 || to >=currentStops.size) return
-        val newList = currentStops.toMutableList()
-        val item = newList.removeAt(from)
-        newList.add(to,item)
+    private fun setupDragAndDrop() {
+
+        val callback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            0
+        ) {
+
+            // Kart başka bir kartın üzerine taşındığında çalışır.
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+
+                val fromPosition = viewHolder.bindingAdapterPosition
+                val toPosition = target.bindingAdapterPosition
+
+                if (fromPosition == RecyclerView.NO_POSITION ||
+                    toPosition == RecyclerView.NO_POSITION
+                ) {
+                    return false
+                }
+
+                routeAdapter.moveItem(fromPosition, toPosition)
+
+                return true
+            }
+
+            // Sağa veya sola kaydırarak silme yapmayacağız.
+            override fun onSwiped(
+                viewHolder: RecyclerView.ViewHolder,
+                direction: Int
+            ) {
+                // Kullanılmıyor.
+            }
+
+            // Kartın herhangi bir yerine basılı tutarak sürükleme kapalı.
+            override fun isLongPressDragEnabled(): Boolean {
+                return false
+            }
+
+            // Sürükleme tamamlandığında çalışır.
+            override fun clearView(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ) {
+                super.clearView(recyclerView, viewHolder)
+
+                saveNewOrder()
+            }
+        }
+
+        itemTouchHelper = ItemTouchHelper(callback)
+
+        itemTouchHelper.attachToRecyclerView(
+            binding.rvRouteItems
+        )
+    }
+    private fun saveNewOrder() {
 
         val appContext = requireContext().applicationContext
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO){
-            AppDatabase.getInstance(appContext).routeDao().saveOrder(newList)
+
+        // Adapter'daki güncel sırayı al.
+        val newOrder = routeAdapter.getCurrentStops()
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+
+            val db = AppDatabase.getInstance(appContext)
+
+            // Yeni sırayı Room Database'e kaydet.
+            db.routeDao().saveOrder(newOrder)
         }
     }
-
 
 
     override fun onDestroyView() {
