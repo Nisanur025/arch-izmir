@@ -7,52 +7,14 @@
     android:orientation="vertical">
 
 <!--HEADER-->
-    <FrameLayout
+    <com.example.arch_izmir.ui.components.ExploreHeaderView
+        android:id="@+id/exploreHeader"
         android:layout_width="match_parent"
-        android:layout_height="130dp">
-
-        <!-- Arkadaki Resim -->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_header_bg" />
-
-        <!-- Fade: alt yazıdan hemen sonra başlar, resmin alt kenarında sayfa rengine erir -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_gravity="bottom"
-            android:background="@drawable/bg_header_fade" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="20dp"
-            android:paddingTop="44dp"
-            android:paddingEnd="20dp">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="@string/discover_izmir"
-                android:textColor="#F3E7C9"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="serif"
-                android:text="@string/home_sub_string"
-                android:textColor="#CDBF9F"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </FrameLayout>
+        android:layout_height="130dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <!--Arama + çipler-->
     <LinearLayout
