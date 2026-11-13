@@ -87,4 +87,30 @@
     <string name="route_description">Bir mekânın sayfasında “Rotaya ekle”ye dokun ya da kartlardaki ＋ simgesini kullan.</string>
     <string name="order_description">Sıralamayı değiştirmek için sürükle</string>
 
+    <string name="passport_header">İzmir Tarih Pasaportum</string>
+    <!-- Başlık -->
+    <string name="passport_title">Pasaport</string>
+    <string name="passport_subtitle">İzmir\'in miraslarını keşfet,\ninci yolculuğunu tamamla!</string>
+
+    <!-- İlerleme kartı -->
+    <string name="discovery_total_label">Toplam Keşif</string>
+    <string name="discovery_count_format">%1$d / %2$d</string>
+    <string name="discovery_percent_format">%%%1$d</string>
+    <string name="discovery_hint">İzmir\'in incilerini keşfetmeye devam et!</string>
+    <string name="symbol_arrow_right">›</string>
+
+    <!-- İnci bölümü -->
+    <string name="pearl_shell_desc">İnci taşıyan istiridye</string>
+    <string name="pearl_banner_title">İzmir\'in İncisi</string>
+    <string name="pearl_banner_desc">Tüm mirasları keşfederek\nbu eşsiz unvana ulaş!</string>
+    <string name="symbol_sparkle">✦</string>
+
+    <!-- Sekmeler -->
+    <string name="tab_discoveries">Keşiflerim</string>
+    <string name="tab_badges">Rozetlerim</string>
+    <string name="tab_stats">İstatistiklerim</string>
+
+    <!-- Gezdiğin yerler -->
+    <string name="visited_places_title">Gezdiğin Yerler</string>
+    <string name="see_all">Tümünü Gör</string>
 </resources>

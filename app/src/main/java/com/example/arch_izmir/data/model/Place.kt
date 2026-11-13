@@ -13,5 +13,7 @@ data class Place(
     val audioGuideSubtitle: String? = null, // Detail sayfasındaki Sesli anlatım Alt Başlık, sesli anlatım olmayanlar için nullable
     val distanceKm: Double = 0.0,
     val latitude: Double = 38.4192,
-    val longitude: Double = 27.1287
+    val longitude: Double = 27.1287,
+    val points: Int = 0,            // Pasaport puanı (+10, +5)
+    var isVisited: Boolean = false  // Gezildi mi?
 )

@@ -31,5 +31,13 @@
     <color name="glow_gold_soft">#80E8C77A</color>
 
     <color name="textColor">#F3E7C9</color>
-
+    <color name="passport_background">#100B1B</color>
+    <color name="passport_card">#1B1028</color>
+    <color name="passport_purple">#30203F</color>
+    <color name="passport_light_purple">#7545A0</color>
+    <color name="passport_gold">#E8C994</color>
+    <color name="passport_pearl">#F6E8D5</color>
+    <color name="passport_text">#F6E8D5</color>
+    <color name="passport_text_soft">#B9AACF</color>
+    <color name="passport_track">#33FFFFFF</color>
 </resources>

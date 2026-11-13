@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/passport_background">
+
+    <!-- Kaydırılabilir ana içerik -->
+    <ScrollView
+        android:id="@+id/passportScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ÜST BAŞLIK ALANI -->
+            <LinearLayout
+                android:id="@+id/headerSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/passport_title"
+                    android:textColor="#F3E7C9"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/passport_subtitle"
+                    android:textColor="@color/passport_text"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <!-- KEŞİF İLERLEME KARTI -->
+            <LinearLayout
+                android:id="@+id/progressSection"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/bg_passport_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Dairesel ilerleme + yüzde -->
+                <FrameLayout
+                    android:layout_width="82dp"
+                    android:layout_height="82dp">
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/discoveryProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:progress="67"
+                        app:indicatorColor="@color/passport_gold"
+                        app:indicatorSize="72dp"
+                        app:trackColor="@color/passport_track"
+                        app:trackCornerRadius="3dp"
+                        app:trackThickness="6dp" />
+
+                    <TextView
+                        android:id="@+id/percentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/passport_gold"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="%67" />
+                </FrameLayout>
+
+                <!-- Metinler -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/discovery_total_label"
+                        android:textColor="@color/passport_text_soft"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/discoveryCountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/passport_text"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        tools:text="18 / 27" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/discovery_hint"
+                        android:textColor="@color/passport_text_soft"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Sağdaki ok -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/symbol_arrow_right"
+                    android:textColor="@color/passport_gold"
+                    android:textSize="32sp" />
+
+            </LinearLayout>
+
+            <!-- İNCİ VE TARİHİ MİRASLAR -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pearlSection"
+                android:layout_width="match_parent"
+                android:layout_height="340dp"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/ivOrbits"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bg_orbits"
+                    app:layout_constraintBottom_toBottomOf="@id/pearlShell"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/pearlShell" />
+
+                <!-- Ortadaki istiridye + inci -->
+                <ImageView
+                    android:id="@+id/pearlShell"
+                    android:layout_width="200dp"
+                    android:layout_height="183dp"
+                    android:contentDescription="@string/pearl_shell_desc"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pearl"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- 1. ÜST ORTA -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_efes_antik_kenti"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+                <!-- 2. SOL ÜST -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_konak"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.15"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.09"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+                <!-- 3. SAĞ ÜST -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_agora"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.09"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+                <!-- 4. SOL ORTA -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_agora"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.42"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+                <!-- 5. SAĞ ORTA -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_agora"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.42"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+                <!-- 6. SOL ALT -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark6"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_agora"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.04"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.8"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+                <!-- 7. SAĞ ALT -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/landmark7"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_agora"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.96"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.8"
+                    app:shapeAppearanceOverlay="@style/CircleImage"
+                    app:strokeColor="@color/passport_gold"
+                    app:strokeWidth="2dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- İZMİR'İN İNCİSİ BANDI -->
+            <LinearLayout
+                android:id="@+id/pearlBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_pearl_banner"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/symbol_sparkle"
+                    android:textColor="@color/passport_gold"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pearl_banner_title"
+                        android:textColor="@color/passport_text"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="@string/pearl_banner_desc"
+                        android:textColor="@color/passport_text_soft"
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/symbol_sparkle"
+                    android:textColor="@color/passport_gold"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- SEKMELER -->
+            <LinearLayout
+                android:id="@+id/tabsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tabDiscoveries"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_tab_selected"
+                    android:drawableStart="@drawable/ic_pin"
+                    android:drawablePadding="4dp"
+                    android:drawableTint="@color/passport_text"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingHorizontal="6dp"
+                    android:text="@string/tab_discoveries"
+                    android:textColor="@color/passport_text"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="13sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeStepGranularity="0.5sp"
+                    app:autoSizeTextType="uniform" />
+
+                <TextView
+                    android:id="@+id/tabBadges"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:drawableStart="@drawable/ic_star"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingHorizontal="6dp"
+                    android:text="@string/tab_badges"
+                    android:textColor="@color/passport_text_soft"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="13sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeStepGranularity="0.5sp"
+                    app:autoSizeTextType="uniform"
+                    app:drawableTint="@color/passport_gold" />
+
+                <TextView
+                    android:id="@+id/tabStats"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1.25"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:drawablePadding="4dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:paddingHorizontal="6dp"
+                    android:text="@string/tab_stats"
+                    android:textColor="@color/passport_text_soft"
+                    android:textStyle="bold"
+                    app:autoSizeMaxTextSize="13sp"
+                    app:autoSizeMinTextSize="10sp"
+                    app:autoSizeStepGranularity="0.5sp"
+                    app:autoSizeTextType="uniform"
+                    app:drawableStartCompat="@drawable/ic_chart"
+                    app:drawableTint="@color/passport_gold" />
+            </LinearLayout>
+            <!-- GEZDİĞİN YERLER -->
+            <LinearLayout
+                android:id="@+id/placesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
+
+                <!-- Başlık satırı -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/visited_places_title"
+                        android:textColor="@color/passport_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/seeAllText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_right"
+                        android:drawablePadding="2dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/see_all"
+                        android:textColor="@color/passport_text"
+                        android:textSize="13sp"
+                        app:drawableTint="@color/passport_text" />
+                </LinearLayout>
+
+                <!-- Yatay kart listesi -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/placesRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="2dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
