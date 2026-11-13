@@ -25,7 +25,7 @@
         android:icon="@drawable/ic_heart_filled"
         android:title="@string/saved"/>
     <item
-        android:id="@+id/passportFragement"
+        android:id="@+id/passportFragment"
         android:checked="false"
         android:icon="@drawable/ic_passport"
         android:title="@string/passport"/>

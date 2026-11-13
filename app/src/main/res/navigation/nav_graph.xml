@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_homeFragment_to_addRouteFragment"
             app:destination="@id/addRouteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_passportFragment"
+            app:destination="@id/passportFragment" />
     </fragment>
     <fragment
         android:id="@+id/placeDetailFragment"
@@ -71,4 +74,8 @@
         android:name="com.example.arch_izmir.ui.auth.AddRouteFragment"
         android:label="fragment_add_route"
         tools:layout="@layout/fragment_add_route" />
+    <fragment
+        android:id="@+id/passportFragment"
+        android:name="com.example.arch_izmir.ui.auth.PassportFragment"
+        android:label="PassportFragment" />
 </navigation>
