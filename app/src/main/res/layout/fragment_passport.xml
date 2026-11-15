@@ -362,7 +362,6 @@
                     android:background="@drawable/bg_tab_selected"
                     android:drawableStart="@drawable/ic_pin"
                     android:drawablePadding="4dp"
-                    android:drawableTint="@color/passport_text"
                     android:gravity="center"
                     android:maxLines="1"
                     android:paddingHorizontal="6dp"
@@ -372,7 +371,8 @@
                     app:autoSizeMaxTextSize="13sp"
                     app:autoSizeMinTextSize="10sp"
                     app:autoSizeStepGranularity="0.5sp"
-                    app:autoSizeTextType="uniform" />
+                    app:autoSizeTextType="uniform"
+                    app:drawableTint="@color/passport_text" />
 
                 <TextView
                     android:id="@+id/tabBadges"
@@ -466,6 +466,185 @@
 
             </LinearLayout>
 
+            <!--            İSTATİSTİKLERİM-->
+            <LinearLayout
+                android:id="@+id/statsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Senin İzmir'in: kişilik kartı -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/SectionCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            style="@style/StatLabel"
+                            android:text="@string/stats_personality_label" />
+
+                        <TextView
+                            android:id="@+id/personalityTitle"
+                            style="@style/StatValue"
+                            android:layout_marginTop="8dp"
+                            android:textSize="24sp"
+                            tools:text="Antik Kent Avcısı" />
+
+                        <TextView
+                            android:id="@+id/personalityDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:textColor="@color/passport_text"
+                            android:textSize="14sp"
+                            tools:text="Gezdiğin yerlerin %50'si antik dönemden." />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 3 özet kart -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/StatCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/statPearlValue"
+                                style="@style/StatValue"
+                                tools:text="30" />
+
+                            <TextView
+                                style="@style/StatLabel"
+                                android:text="@string/sum_pearl" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/StatCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/statVisitedValue"
+                                style="@style/StatValue"
+                                tools:text="4 / 27" />
+
+                            <TextView
+                                style="@style/StatLabel"
+                                android:text="@string/passport_visited" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/StatCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:id="@+id/statStreakValue"
+                                style="@style/StatValue"
+                                tools:text="2 gün" />
+
+                            <TextView
+                                style="@style/StatLabel"
+                                android:text="@string/streak_label" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- En çok neyi seviyorsun -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/SectionCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            style="@style/SectionTitle"
+                            android:text="@string/stats_by_category" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/categoryRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:nestedScrollingEnabled="false" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Bölgelere göre ilerleme -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/SectionCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            style="@style/SectionTitle"
+                            android:text="@string/stats_by_region" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/regionRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:nestedScrollingEnabled="false" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

@@ -113,4 +113,12 @@
     <!-- Gezdiğin yerler -->
     <string name="visited_places_title">Gezdiğin Yerler</string>
     <string name="see_all">Tümünü Gör</string>
+
+    <string name="streak_label">Aktif seri</string>
+    <string name="stats_personality_label">SENİN İZMİR\'İN</string>
+    <string name="stats_by_category">En çok neyi seviyorsun?</string>
+    <string name="stats_by_region">Bölgelere göre ilerleme</string>
+
+    <string name="sum_pearl">Toplam inci</string>
+    <string name="passport_visited">Gezilen yer</string>
 </resources>

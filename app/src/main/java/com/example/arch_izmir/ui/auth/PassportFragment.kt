@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arch_izmir.R
+import com.example.arch_izmir.data.model.ProgressRow
 import com.example.arch_izmir.data.repository.PlaceRepository
 import com.example.arch_izmir.databinding.FragmentPassportBinding
+import com.example.arch_izmir.ui.adapter.ProgressRowAdapter
 import com.example.arch_izmir.ui.adapter.VisitedPlaceAdapter
 
 class PassportFragment : Fragment() {
@@ -35,6 +39,8 @@ class PassportFragment : Fragment() {
 
         setupProgress(visitedPlaces.size)
         setupPlacesRecycler(visitedPlaces)
+        setupStats(visitedPlaces.size)
+        setupTabs()
     }
 
     // İlerleme kartı: yüzde, sayaç ve dairesel gösterge
@@ -56,6 +62,60 @@ class PassportFragment : Fragment() {
             // TODO: Detay sayfasına git
             // val bundle = Bundle().apply { putInt("placeId", place.id) }
             // findNavController().navigate(R.id.action_passportFragment_to_detailFragment, bundle)
+        }
+    }
+    private fun setupTabs() = with(binding) {
+        tabDiscoveries.setOnClickListener { selectTab(it) }
+        tabBadges.setOnClickListener { selectTab(it) }
+        tabStats.setOnClickListener { selectTab(it) }
+        selectTab(tabDiscoveries)
+    }
+    private fun setupStats(visitedCount:Int) =with(binding) {
+        // Özet kartlar
+        statPearlValue.text = "30"
+        statVisitedValue.text = "$visitedCount / $totalHeritageCount"
+        statStreakValue.text = "2 gün"
+
+        // Kişilik kartı
+        personalityTitle.text = "Antik Kent Avcısı"
+        personalityDesc.text = "Gezdiğin yerlerin %50'si antik dönemden."
+
+        // Kategoriler (en çok olan en üstte)
+        val categories = listOf(
+            ProgressRow("Antik kent ve kalıntı", 2, 4, "2 yer"),
+            ProgressRow("Tarihi simge", 1, 4, "1 yer"),
+            ProgressRow("Dini mekanlar", 1, 4, "1 yer")
+        )
+        categoryRecycler.layoutManager = LinearLayoutManager(requireContext())
+        categoryRecycler.adapter = ProgressRowAdapter(categories)
+
+        // Bölgeler (ilerlemeye göre sıralı)
+        val regions = listOf(
+            Triple("Selçuk", 2, 5),
+            Triple("Konak", 2, 7),
+            Triple("Karşıyaka", 0, 4),
+            Triple("Bergama", 0, 3),
+            Triple("Urla", 0, 3),
+            Triple("Çeşme", 0, 3),
+            Triple("Foça", 0, 2)
+        ).sortedByDescending { it.second.toFloat() / it.third }
+            .map { (name, visited, total) ->
+                ProgressRow(name, visited, total, "$visited / $total")
+            }
+        regionRecycler.layoutManager = LinearLayoutManager(requireContext())
+        regionRecycler.adapter = ProgressRowAdapter(regions)
+    }
+    private fun selectTab(selected: View) =with(binding) {
+        placesSection.isVisible = selected == tabDiscoveries
+        statsSection.isVisible = selected == tabStats
+        // Rozetler bölümünü ekleyince buraya: badgesSection.isVisible = selected == tabBadges
+
+        listOf(tabDiscoveries, tabBadges, tabStats).forEach { tab ->
+            val on = tab == selected
+            tab.setBackgroundResource(if (on) R.drawable.bg_tab_selected else R.drawable.bg_tab_unselected)
+            tab.setTextColor(
+                ContextCompat.getColor(requireContext(), if (on) R.color.passport_text else R.color.passport_text_soft)
+            )
         }
     }
 
