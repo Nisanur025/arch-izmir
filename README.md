@@ -30,36 +30,6 @@
     <td align="center" valign="top"><img src="screenshots/passport_statistics.png" height="480" /><br/><b>Pasaport-İstatistikler</b></td>
   </tr>
 </table>
----
-
-## ✨ Özellikler
-
-### Tamamlananlar
-- [x] E-posta, Ad Soyad ve şifre ile kayıt olma
-- [x] E-posta ve şifre ile giriş yapma
-- [x] "Beni hatırla" ile otomatik giriş
-- [x] Tarihi yerlerin listelenmesi (RecyclerView-Home)
-- [x] Yerel veritabanında kullanıcı bilgisi saklama
-
-### Planlananlar
-- [ ] İzmir'in deniz ve plajlarının tanıtımı
-- [ ] Harita üzerinde yerleri gösterme, en yakın rota oluşturma
-- [ ] Kategorilere göre filtreleme (tarihi yerler, deniz, doğa)
-- [ ] Arama
-- [ ] Favorilere Ekleme
-- [ ] Karanlık / aydınlık tema
-- [ ] Türkçe ve İngilizce dil desteği
-- [ ] **Yapay zeka destekli sohbet botu**
-    - [ ] Galeriden fotoğraf seçme
-    - [ ] Fotoğraftaki yerin tanınması ve Türkçe açıklanması
-    - [ ] Basit sorulara cevap verme
-- [ ] **İzmir Pasaportu**
-  - [ ] Ziyaret edilen yerlerin pasaportta kaydedilmesi
-  - [ ] Her yer için rozet / damga tasarımı
-  - [ ] Ziyaret edilmemiş yerlerin kilitli (gri) gösterilmesi
-  - [ ] Rozet kazanınca animasyon ve bildirim
-  - [ ] Kategori rozetleri (Tarihi Yerler Gezgini, Deniz Aşığı vb.)
-  - [ ] İlerleme göstergesi (örn. 7 / 25 yer ziyaret edildi)
 
 ---
 
