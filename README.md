@@ -19,6 +19,16 @@
     <td align="center" valign="top"><img src="screenshots/place_detail_2.png" height="480" /><br/><b>Detay Sayfası</b></td>
     <td align="center" valign="top"><img src="screenshots/favorite.png" height="480" /><br/><b>Favori</b></td>
   </tr>
+  <tr>
+    <td align="center" valign="top"><img src="screenshots/guide.png" height="480" /><br/><b>Rehber Sayfası</b></td>
+    <td align="center" valign="top"><img src="screenshots/route.png" height="480" /><br/><b>Rota</b></td>
+    <td align="center" valign="top"><img src="screenshots/passport.png" height="480" /><br/><b>Pasaport Sayfası</b></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><img src="screenshots/passport_visited.png" height="480" /><br/><b>Pasaport-Keşiflerim</b></td>
+    <td align="center" valign="top"><img src="screenshots/passport_badge.png" height="480" /><br/><b>Pasaport-Rozetlerim</b></td>
+    <td align="center" valign="top"><img src="screenshots/passport_statistics.png" height="480" /><br/><b>Pasaport-İstatistikler</b></td>
+  </tr>
 </table>
 ---
 
