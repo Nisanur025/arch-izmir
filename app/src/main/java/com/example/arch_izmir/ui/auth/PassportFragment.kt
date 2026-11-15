@@ -7,11 +7,15 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arch_izmir.R
+import com.example.arch_izmir.data.model.Badge
+import com.example.arch_izmir.data.model.BadgeState
 import com.example.arch_izmir.data.model.ProgressRow
 import com.example.arch_izmir.data.repository.PlaceRepository
 import com.example.arch_izmir.databinding.FragmentPassportBinding
+import com.example.arch_izmir.ui.adapter.BadgeAdapter
 import com.example.arch_izmir.ui.adapter.ProgressRowAdapter
 import com.example.arch_izmir.ui.adapter.VisitedPlaceAdapter
 
@@ -40,6 +44,7 @@ class PassportFragment : Fragment() {
         setupProgress(visitedPlaces.size)
         setupPlacesRecycler(visitedPlaces)
         setupStats(visitedPlaces.size)
+        setupBadges()
         setupTabs()
     }
 
@@ -108,7 +113,7 @@ class PassportFragment : Fragment() {
     private fun selectTab(selected: View) =with(binding) {
         placesSection.isVisible = selected == tabDiscoveries
         statsSection.isVisible = selected == tabStats
-        // Rozetler bölümünü ekleyince buraya: badgesSection.isVisible = selected == tabBadges
+        badgesSection.isVisible = selected == tabBadges
 
         listOf(tabDiscoveries, tabBadges, tabStats).forEach { tab ->
             val on = tab == selected
@@ -119,6 +124,24 @@ class PassportFragment : Fragment() {
         }
     }
 
+    private fun setupBadges() = with(binding) {
+        val badges = listOf(
+            Badge("İlk Adım", "1 yer keşfet", BadgeState.EARNED, dateText = "12 Eki 2026"),
+            Badge("Antik Kaşif", "2 antik yer gez", BadgeState.EARNED, dateText = "12 Eki 2026"),
+            Badge("Gönül Gezgini", "Bir inanç mekânı gez", BadgeState.EARNED, dateText = "3 Kas 2026"),
+            Badge("Selçuk Uzmanı", "Selçuk'ta 5 yer gez", BadgeState.IN_PROGRESS, value = 2, max = 5),
+            Badge("Konak Gezgini", "Konak'ta 7 yer gez", BadgeState.IN_PROGRESS, value = 2, max = 7),
+            Badge("10 Yer Keşfet", "Toplam 10 yer gez", BadgeState.IN_PROGRESS, value = 4, max = 10),
+            Badge("Karşıyaka Kaşifi", "Karşıyaka'da 4 yer gez", BadgeState.LOCKED, value = 0, max = 4),
+            Badge("İzmir'in İncisi", "Tüm 27 yeri keşfet", BadgeState.LOCKED, value = 4, max = 27)
+        )
+
+        val earned = badges.count { it.state == BadgeState.EARNED }
+        badgeSummary.text = "Rozet koleksiyonu: $earned / ${badges.size}"
+
+        badgeRecycler.layoutManager = GridLayoutManager(requireContext(), 2)
+        badgeRecycler.adapter = BadgeAdapter(badges)
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

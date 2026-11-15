@@ -466,7 +466,7 @@
 
             </LinearLayout>
 
-            <!--            İSTATİSTİKLERİM-->
+            <!-- İSTATİSTİKLERİM-->
             <LinearLayout
                 android:id="@+id/statsSection"
                 android:layout_width="match_parent"
@@ -644,6 +644,30 @@
                             android:nestedScrollingEnabled="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+            <!--rozetlerim-->
+            <LinearLayout
+                android:id="@+id/badgesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/badgeSummary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/passport_gold"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/badgeRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:nestedScrollingEnabled="false" />
             </LinearLayout>
         </LinearLayout>
 
